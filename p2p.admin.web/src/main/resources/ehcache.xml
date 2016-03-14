@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<diskStore path="java.io.tmpdir/os/service" />
+	<defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="600" timeToLiveSeconds="600" overflowToDisk="true" diskSpoolBufferSizeMB="30" maxElementsOnDisk="10000000" diskPersistent="false" diskExpiryThreadIntervalSeconds="120" />
+	
+	<cache name="front_member_access" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="position_province" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_province_id" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="position_city" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_city_province" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_city_id" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="position_county" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_county_city" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_county_id" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="position_town" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_town_county" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_town_id" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="position_village" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_village_town" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="position_village_id" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+	<cache name="dictionary_catalog_dataId" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="dictionary_value_dataId" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="dictionary_value_code" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="dictionary_value_allByCode" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="dictionary_value_catalogId" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	<cache name="dictionary_value_catalog" maxElementsInMemory="1000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" overflowToDisk="true" diskPersistent="true" diskExpiryThreadIntervalSeconds="600" />
+	
+</ehcache>
