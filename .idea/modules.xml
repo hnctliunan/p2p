@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/p2p.iml" filepath="$PROJECT_DIR$/p2p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.biz/p2p.admin.biz.iml" filepath="$PROJECT_DIR$/p2p.admin.biz/p2p.admin.biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.biz.impl/p2p.admin.biz.impl.iml" filepath="$PROJECT_DIR$/p2p.admin.biz.impl/p2p.admin.biz.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.dao/p2p.admin.dao.iml" filepath="$PROJECT_DIR$/p2p.admin.dao/p2p.admin.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.entity/p2p.admin.entity.iml" filepath="$PROJECT_DIR$/p2p.admin.entity/p2p.admin.entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.jms/p2p.admin.jms.iml" filepath="$PROJECT_DIR$/p2p.admin.jms/p2p.admin.jms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.admin.web/p2p.admin.web.iml" filepath="$PROJECT_DIR$/p2p.admin.web/p2p.admin.web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.common.util/p2p.common.util.iml" filepath="$PROJECT_DIR$/p2p.common.util/p2p.common.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.biz/p2p.cust.biz.iml" filepath="$PROJECT_DIR$/p2p.cust.biz/p2p.cust.biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.biz.impl/p2p.cust.biz.impl.iml" filepath="$PROJECT_DIR$/p2p.cust.biz.impl/p2p.cust.biz.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.dao/p2p.cust.dao.iml" filepath="$PROJECT_DIR$/p2p.cust.dao/p2p.cust.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.entity/p2p.cust.entity.iml" filepath="$PROJECT_DIR$/p2p.cust.entity/p2p.cust.entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.jms/p2p.cust.jms.iml" filepath="$PROJECT_DIR$/p2p.cust.jms/p2p.cust.jms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2p.cust.web/p2p.cust.web.iml" filepath="$PROJECT_DIR$/p2p.cust.web/p2p.cust.web.iml" />
+    </modules>
+  </component>
+</project>

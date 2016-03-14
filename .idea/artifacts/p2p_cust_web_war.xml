@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="p2p.cust.web:war">
+    <output-path>$PROJECT_DIR$/p2p.cust.web/target</output-path>
+    <root id="archive" name="p2p.cust.web.war">
+      <element id="artifact" artifact-name="p2p.cust.web:war exploded" />
+    </root>
+  </artifact>
+</component>

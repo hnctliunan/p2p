@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                     http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                     http://www.springframework.org/schema/context
+                     http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                     http://www.springframework.org/schema/aop
+                     http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                     http://www.springframework.org/schema/tx
+                     http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+                     http://www.springframework.org/schema/cache
+                     http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
+                     
+    <bean id="filter" class="com.alibaba.druid.filter.stat.StatFilter">
+    	<property name="slowSqlMillis" value="10000" />
+    	<property name="logSlowSql" value="true" />
+    </bean>
+	
+	<bean id="backMasterDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="url" value="${mysql.back.master.url}" />
+		<property name="username" value="${mysql.back.master.username}" />
+		<property name="password" value="${mysql.back.master.password}" />
+		<property name="proxyFilters">
+	        <list>
+	            <ref bean="filter" />
+	        </list>
+	    </property>
+	</bean>
+	<bean id="backSlaveDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="url" value="${mysql.back.slave.url}" />
+		<property name="username" value="${mysql.back.slave.username}" />
+		<property name="password" value="${mysql.back.slave.password}" />
+		<property name="proxyFilters">
+	        <list>
+	            <ref bean="filter" />
+	        </list>
+	    </property>
+	</bean>
+
+	<bean id="backDynamicDataSourceHolder" class="com.common.datasource.DynamicDataSourceHolder">
+		<property name="masterDataSources">
+			<map key-type="java.lang.String">
+				<entry key="masterDataSource" value-ref="backMasterDataSource" />
+			</map>
+		</property>
+		<property name="slaveDataSources">
+			<map key-type="java.lang.String">
+				<entry key="slaveDataSource" value-ref="backSlaveDataSource" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="backMasterDataSource" />
+	</bean>
+
+	<bean id="backDataSourceAspect" class="com.common.datasource.DataSourceAspect">
+		<property name="dynamicDataSourceHolder" ref="backDynamicDataSourceHolder" />
+	</bean>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<aop:config>
+		<aop:aspect id="aspectBack" ref="backDataSourceAspect">
+			<aop:pointcut id="txBack" expression="execution(* com.admin.biz.*.impl.*.*(..))" />
+			<aop:before pointcut-ref="txBack" method="before" />
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="backSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="backDynamicDataSourceHolder" />
+		<property name="configLocation" value="classpath:mybatis.xml" />
+	</bean>
+	
+	<bean id="backMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.admin.dao.*" />
+		<property name="sqlSessionFactoryBeanName" value="backSqlSessionFactory" />
+	</bean>
+
+	<bean id="backTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="backMasterDataSource" />
+	</bean>
+	<tx:annotation-driven transaction-manager="backTransactionManager" proxy-target-class="true" order="1" />
+	
+</beans>
