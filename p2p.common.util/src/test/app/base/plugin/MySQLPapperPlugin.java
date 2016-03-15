@@ -64,11 +64,11 @@ public class MySQLPapperPlugin extends PluginAdapter{
 	}
 
 	private void addPage(TopLevelClass topLevelClass,IntrospectedTable introspectedTable, String name) {
-		topLevelClass.addImportedType(new FullyQualifiedJavaType("com.base.util.papper.PageSet"));
+		topLevelClass.addImportedType(new FullyQualifiedJavaType("com.hl.utils.papper.PageSet"));
 		CommentGenerator commentGenerator = context.getCommentGenerator();
 		Field field = new Field();
 		field.setVisibility(JavaVisibility.PROTECTED);
-		field.setType(new FullyQualifiedJavaType("com.base.util.papper.PageSet"));
+		field.setType(new FullyQualifiedJavaType("com.hl.utils.papper.PageSet"));
 		field.setName(name);
 		commentGenerator.addFieldComment(field, introspectedTable);
 		topLevelClass.addField(field);
@@ -77,13 +77,13 @@ public class MySQLPapperPlugin extends PluginAdapter{
 		Method method = new Method();
 		method.setVisibility(JavaVisibility.PUBLIC);
 		method.setName("set" + camel);
-		method.addParameter(new Parameter(new FullyQualifiedJavaType("com.base.util.papper.PageSet"), name));
+		method.addParameter(new Parameter(new FullyQualifiedJavaType("com.hl.utils.papper.PageSet"), name));
 		method.addBodyLine("this." + name + "=" + name + ";");
 		commentGenerator.addGeneralMethodComment(method, introspectedTable);
 		topLevelClass.addMethod(method);
 		method = new Method();
 		method.setVisibility(JavaVisibility.PUBLIC);
-		method.setReturnType(new FullyQualifiedJavaType("com.base.util.papper.PageSet"));
+		method.setReturnType(new FullyQualifiedJavaType("com.hl.utils.papper.PageSet"));
 		method.setName("get" + camel);
 		method.addBodyLine("return " + name + ";");
 		commentGenerator.addGeneralMethodComment(method, introspectedTable);

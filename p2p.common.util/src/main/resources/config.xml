@@ -3,7 +3,7 @@
 <generatorConfiguration>
 	<classPathEntry location="F:\maven\repository\mysql\mysql-connector-java\5.1.32\mysql-connector-java-5.1.32.jar" />
 	<context id="MySQL" targetRuntime="MyBatis3">
-		<plugin type="app.base.plugin.BaseEntityPlugin" />
+		<!--<plugin type="app.base.plugin.BaseEntityPlugin" />-->
 		<plugin type="app.base.plugin.BatchPlugin" />
 		<plugin type="app.base.plugin.MySQLPapperPlugin" />
 		<commentGenerator>

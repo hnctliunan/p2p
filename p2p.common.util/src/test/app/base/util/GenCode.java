@@ -12,7 +12,7 @@ public class GenCode {
 	
 	public static void main(String[] args){
 		try {
-			List<String> warnings = new ArrayList<String>();
+			List<String> warnings = new ArrayList<>();
 			ConfigurationParser cp = new ConfigurationParser(warnings);
 			boolean overwrite = true;
 			Configuration config = cp.parseConfiguration(GenCode.class.getResourceAsStream("/config.xml"));

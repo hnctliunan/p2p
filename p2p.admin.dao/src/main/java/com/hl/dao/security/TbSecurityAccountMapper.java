@@ -2,9 +2,8 @@ package com.hl.dao.security;
 
 import com.hl.entity.security.TbSecurityAccount;
 import com.hl.entity.security.TbSecurityAccountExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbSecurityAccountMapper {
     int countByExample(TbSecurityAccountExample example);

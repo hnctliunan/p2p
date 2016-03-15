@@ -25,5 +25,10 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>hl</groupId>
+            <artifactId>p2p.common.util</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package com.hl.entity.security;
 
-import com.base.util.papper.PageSet;
+import com.hl.utils.papper.PageSet;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
