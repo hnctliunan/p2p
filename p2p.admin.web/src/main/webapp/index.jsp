@@ -1,5 +1,5 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%
+    String path = request.getContextPath() + "/home/login";
+    response.sendRedirect(path);
+%>
+%>
