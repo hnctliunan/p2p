@@ -15,7 +15,7 @@
                      http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
 
 	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->
-	<bean id="shiroDbRealm" class="os.web.util.shiro.DataBaseRealm">
+	<bean id="shiroDbRealm" class="com.hl.util.shiro.DataBaseRealm">
 		<property name="authorizationCacheName" value="shiro.authorizationCache"/>
 	</bean>
 
@@ -45,7 +45,7 @@
     	<property name="sessionValidationInterval" value="1800000"/>
 	</bean>
 	
-	<bean id="formAuthenticationFilter" class="os.web.util.shiro.FormAuthenticationCaptchaFilter" />
+	<bean id="formAuthenticationFilter" class="com.hl.util.shiro.FormAuthenticationCaptchaFilter" />
 
 	<!-- Shiro主过滤器本身功能十分强大,其强大之处就在于它支持任何基于URL路径表达式的、自定义的过滤器的执行 -->
 	<!-- Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->
@@ -67,6 +67,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/home/**=anon
+				/resources/**=anon
 				/**=authc
 			</value>
 		</property>

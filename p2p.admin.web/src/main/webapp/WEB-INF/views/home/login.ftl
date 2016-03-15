@@ -11,7 +11,7 @@
 					top.location.href = window.location.href;
 				}
 		    	$('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
-				$(window).resize(function(){  
+				$(window).resize(function(){
 			    	$('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
 			    });
 			});
@@ -79,6 +79,6 @@
                 </form>
 			</div>
 		</div>
-		<div class="loginbm">版权所有  2013 </div>
+		<div class="loginbm">版权所有  2016 </div>
 	</body>
 </html>

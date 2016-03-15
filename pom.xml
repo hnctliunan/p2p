@@ -12,13 +12,13 @@
     <module>p2p.cust.biz.impl</module>
     <module>p2p.cust.jms</module>
     <module>p2p.cust.web</module>
+    <module>p2p.common.util</module>
+    <module>p2p.admin.web</module>
     <module>p2p.admin.entity</module>
     <module>p2p.admin.dao</module>
     <module>p2p.admin.biz</module>
     <module>p2p.admin.biz.impl</module>
     <module>p2p.admin.jms</module>
-    <module>p2p.admin.web</module>
-    <module>p2p.common.util</module>
   </modules>
   <packaging>pom</packaging>
 

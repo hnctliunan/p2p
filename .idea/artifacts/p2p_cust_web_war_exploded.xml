@@ -16,7 +16,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="F:\private\p2p\p2p.cust.web\target/MANIFEST.MF" />
+        <element id="file-copy" path="G:\p2p\p2p\p2p.cust.web\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="p2p.cust.web/web/Web" />
     </root>

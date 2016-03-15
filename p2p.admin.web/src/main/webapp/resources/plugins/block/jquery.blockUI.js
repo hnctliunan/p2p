@@ -123,16 +123,24 @@
 			// these and use an external stylesheet then do this in your code:
 			// $.blockUI.defaults.css = {};
 			css: {
-				padding:	0,
+				padding:	"10px",
 				margin:		0,
-				width:		'30%',
+				height:		"40px",
+				"line-height":"40px",
+				width:		'320px',
 				top:		'40%',
-				left:		'35%',
+				left:		'50%',
+				"margin-left":"-150px",
+				"margin-top":"-25px",
 				textAlign:	'center',
-				color:		'#000',
-				border:		'3px solid #5BBCF3',
+				color:		'#0099CC',
+				border:		'2px solid #0099CC',
 				backgroundColor:'#fff',
-				cursor:		'wait'
+				cursor:		'wait',
+				"font-size":"13px",
+				'-webkit-border-radius':'6px',
+				'-moz-border-radius':	'6px',
+				'border-radius':		'6px'
 			},
 
 			// minimal style set used when themes are used

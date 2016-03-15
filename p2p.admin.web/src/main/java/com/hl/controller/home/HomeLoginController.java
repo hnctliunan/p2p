@@ -31,7 +31,7 @@ public class HomeLoginController extends BaseController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
 	public Object login(Model model,String username,String password,String remember){
-		Map<String,Object> result = new HashMap<String,Object>();
+		Map<String,Object> result = new HashMap<>();
 		if(StringUtils.isEmpty(username)){
 			result.put("success",false);
 			result.put("message","请输入登录帐号!");

@@ -1,12 +1,18 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="p2p.admin.web:war exploded">
-    <output-path>$PROJECT_DIR$/p2p.admin.web/target/p2p.admin.web-1.0</output-path>
+    <output-path>$PROJECT_DIR$/p2p.admin.web/target/p2p.admin.web</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="p2p.admin.web" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="p2p.admin.biz-1.0.jar">
+            <element id="module-output" name="p2p.admin.biz" />
+          </element>
+          <element id="archive" name="p2p.admin.entity-1.0.jar">
+            <element id="module-output" name="p2p.admin.entity" />
+          </element>
           <element id="archive" name="p2p.common.util-1.0.jar">
             <element id="module-output" name="p2p.common.util" />
           </element>
@@ -58,15 +64,13 @@
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.3" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-ehcache:1.2.3" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.3.2" />
-          <element id="library" level="project" name="Maven: junit:junit:4.12" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.14" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:3.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.43" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="F:\gjs\p2p\p2p.admin.web\target/MANIFEST.MF" />
+        <element id="file-copy" path="G:\p2p\p2p\p2p.admin.web\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="p2p.admin.web/web/Web" />
     </root>
