@@ -17,7 +17,7 @@
     </bean>
 	
 	<bean id="backMasterDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="driverClassName" value="${mysql.back.driver}" />
 		<property name="url" value="${mysql.back.master.url}" />
 		<property name="username" value="${mysql.back.master.username}" />
 		<property name="password" value="${mysql.back.master.password}" />
@@ -28,7 +28,7 @@
 	    </property>
 	</bean>
 	<bean id="backSlaveDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="driverClassName" value="${mysql.back.driver}" />
 		<property name="url" value="${mysql.back.slave.url}" />
 		<property name="username" value="${mysql.back.slave.username}" />
 		<property name="password" value="${mysql.back.slave.password}" />
@@ -39,7 +39,7 @@
 	    </property>
 	</bean>
 
-	<bean id="backDynamicDataSourceHolder" class="com.common.datasource.DynamicDataSourceHolder">
+	<bean id="backDynamicDataSourceHolder" class="com.hl.common.datasource.DynamicDataSourceHolder">
 		<property name="masterDataSources">
 			<map key-type="java.lang.String">
 				<entry key="masterDataSource" value-ref="backMasterDataSource" />
@@ -53,7 +53,7 @@
 		<property name="defaultTargetDataSource" ref="backMasterDataSource" />
 	</bean>
 
-	<bean id="backDataSourceAspect" class="com.common.datasource.DataSourceAspect">
+	<bean id="backDataSourceAspect" class="com.hl.common.datasource.DataSourceAspect">
 		<property name="dynamicDataSourceHolder" ref="backDynamicDataSourceHolder" />
 	</bean>
 	
