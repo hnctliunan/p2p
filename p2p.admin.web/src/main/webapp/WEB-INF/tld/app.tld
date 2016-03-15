@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.2</jspversion>
+    <shortname>app</shortname>
+    <uri>/app-tags</uri>
+    <tag>
+        <name>root</name>
+        <tagclass>com.app.web.tag.RootTag</tagclass>
+    </tag>
+    <tag>
+        <name>locale</name>
+        <tagclass>com.app.web.tag.DialectTag</tagclass>
+    </tag>
+    <tag>
+		<name>dateformat</name>
+		<tagclass>com.app.web.tag.DateFormatTag</tagclass>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>format</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

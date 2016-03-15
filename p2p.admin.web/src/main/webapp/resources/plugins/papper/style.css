@@ -1,0 +1,25 @@
+.light-theme a, .light-theme span {
+	float: left;
+	color: #666;
+	font-size:13px;
+	line-height:24px;
+	font-weight: normal;
+	text-align: center;
+	min-width: 14px;
+	padding: 0 7px;
+	margin: 0 5px 0 0;
+	background:#f3f3f3;
+	cursor:pointer;
+}
+
+.light-theme a:hover {
+	text-decoration: none;
+	background:#37ADE6;
+	color:#ffffff;
+}
+
+.light-theme .current {
+	background:#F0BB4D;
+	color:#FFF;
+	cursor: default;
+}
