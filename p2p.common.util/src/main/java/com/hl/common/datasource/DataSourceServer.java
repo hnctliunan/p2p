@@ -1,4 +1,4 @@
-package com.common.datasource;
+package com.hl.common.datasource;
 
 public enum DataSourceServer {
 	

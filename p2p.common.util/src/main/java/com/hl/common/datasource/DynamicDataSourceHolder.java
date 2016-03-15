@@ -1,4 +1,4 @@
-package com.common.datasource;
+package com.hl.common.datasource;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.InitializingBean;
