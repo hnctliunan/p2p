@@ -15,6 +15,7 @@
                      http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
 
 	<context:property-placeholder location="classpath*:config.properties" ignore-resource-not-found="false"/>
+	<context:component-scan base-package="com.hl.admin.biz.*" />
 	
 	<!-- 启用缓存注解功能 -->
 	<cache:annotation-driven cache-manager="ehCacheManager" proxy-target-class="true" />

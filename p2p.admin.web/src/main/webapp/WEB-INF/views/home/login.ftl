@@ -64,8 +64,8 @@
 			<div class="loginbox">
                 <form action="${base}/home/login" method="post">
                     <ul>
-                        <li><input id="username" type="text" class="loginuser" value=''/></li>
-                        <li><input id="password" type="password" class="loginpwd" value='' onkeydown='if(event.keyCode==13){loginbtn.click()}'/></li>
+                        <li><input id="username" type="text" class="loginuser" value='admin'/></li>
+                        <li><input id="password" type="password"  class="loginpwd" value='123456' onkeydown='if(event.keyCode==13){loginbtn.click()}'/></li>
                         <li>
                             <input type="button" id="loginbtn" class="loginbtn" value="登录" onclick="doLogin()"/>
                             <label>

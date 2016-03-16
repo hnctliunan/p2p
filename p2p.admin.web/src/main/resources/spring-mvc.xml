@@ -13,12 +13,11 @@
 
 	<context:property-placeholder location="classpath*:config.properties" ignore-resource-not-found="false"/>
 	
-	<context:component-scan base-package="com.hl.controller.*">
+	<context:component-scan base-package="com.hl.admin.controller.*">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 	<mvc:resources location="/resources/" mapping="/resources/**" />
-	<!--<mvc:default-servlet-handler />-->
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -54,7 +53,7 @@
 	</bean>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<property name="viewClass" value="com.hl.util.freemarker.ExtFreeMarkerView" />
+		<property name="viewClass" value="com.hl.admin.util.freemarker.ExtFreeMarkerView" />
 		<property name="suffix" value=".ftl" />
 		<property name="contentType" value="text/html;charset=UTF-8" />
 		<property name="exposeRequestAttributes" value="true" />

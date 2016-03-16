@@ -29,6 +29,11 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>hl</groupId>
+            <artifactId>p2p.admin.biz.impl</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
