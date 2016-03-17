@@ -1,18 +1,19 @@
 package com.hl.admin.biz.security.impl;
 
-import com.hl.admin.base.vo.DataVO;
 import com.hl.admin.biz.security.ITbSecurityAccountBiz;
+import com.hl.admin.base.vo.DataVO;
 import com.hl.admin.dao.security.TbSecurityAccountMapper;
 import com.hl.admin.entity.security.TbSecurityAccount;
 import com.hl.admin.entity.security.TbSecurityAccountExample;
 import com.hl.utils.encrypt.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
+
 @Service
 public class TbSecurityAccountBizImpl implements ITbSecurityAccountBiz {
-//    @Autowired
+    @Autowired
     private TbSecurityAccountMapper objSecurityAccountMapper;
     @Override
     public DataVO<TbSecurityAccount> userLogin(String username, String password) {

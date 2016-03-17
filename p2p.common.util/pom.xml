@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
+    <artifactId>p2p.common.util</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -60,7 +61,7 @@
             <artifactId>freemarker</artifactId>
         </dependency>
     </dependencies>
-    <artifactId>p2p.common.util</artifactId>
+
 
 
 </project>

@@ -37,5 +37,20 @@
         <module name="p2p.cust.web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="p2p.admin.biz" target="1.7" />
+      <module name="p2p.admin.biz.impl" target="1.7" />
+      <module name="p2p.admin.dao" target="1.7" />
+      <module name="p2p.admin.entity" target="1.7" />
+      <module name="p2p.admin.jms" target="1.7" />
+      <module name="p2p.admin.web" target="1.7" />
+      <module name="p2p.common.util" target="1.7" />
+      <module name="p2p.cust.biz" target="1.7" />
+      <module name="p2p.cust.biz.impl" target="1.7" />
+      <module name="p2p.cust.dao" target="1.7" />
+      <module name="p2p.cust.entity" target="1.7" />
+      <module name="p2p.cust.jms" target="1.7" />
+      <module name="p2p.cust.web" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -16,9 +16,10 @@
 
 	<context:property-placeholder location="classpath*:config.properties" ignore-resource-not-found="false"/>
 	<context:component-scan base-package="com.hl.admin.biz.*" />
-	
+
+	<bean id="contextUtil" class="com.hl.utils.applicationcontext.ContextUtil" scope="singleton"/>
 	<!-- 启用缓存注解功能 -->
-	<cache:annotation-driven cache-manager="ehCacheManager" proxy-target-class="true" />
+	<cache:annotation-driven cache-manager="ehCacheManager" proxy-target-class="false" />
 
 	<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
 		<property name="configLocation" value="classpath:ehcache.xml" />

@@ -1,7 +1,7 @@
 package com.hl.admin.util.shiro;
 
-import com.hl.admin.base.vo.DataVO;
 import com.hl.admin.biz.security.ITbSecurityAccountBiz;
+import com.hl.admin.base.vo.DataVO;
 import com.hl.admin.entity.security.TbSecurityAccount;
 import com.hl.utils.applicationcontext.ContextUtil;
 import com.hl.utils.constant.SessionConstant;
@@ -30,6 +30,13 @@ public class DataBaseRealm extends AuthorizingRealm{
 //				simpleAuthorInfo.addStringPermission(r.getResourceCode());
 //			}
 //		}
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:main");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:add");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:delete");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:bdelete");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:detail");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:modify");
+		simpleAuthorInfo.addStringPermission("TbSecurityResource:save");
 		return simpleAuthorInfo;
 	}
 

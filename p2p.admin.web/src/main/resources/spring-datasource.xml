@@ -57,10 +57,10 @@
 		<property name="dynamicDataSourceHolder" ref="backDynamicDataSourceHolder" />
 	</bean>
 	
-	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<aop:aspectj-autoproxy/>
 	<aop:config>
 		<aop:aspect id="aspectBack" ref="backDataSourceAspect">
-			<aop:pointcut id="txBack" expression="execution(* com.admin.biz.*.impl.*.*(..))" />
+			<aop:pointcut id="txBack" expression="execution(* com.hl.admin.biz.*.impl.*.*(..))" />
 			<aop:before pointcut-ref="txBack" method="before" />
 		</aop:aspect>
 	</aop:config>
@@ -71,13 +71,13 @@
 	</bean>
 	
 	<bean id="backMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.admin.dao.*" />
+		<property name="basePackage" value="com.hl.admin.dao.*" />
 		<property name="sqlSessionFactoryBeanName" value="backSqlSessionFactory" />
 	</bean>
 
 	<bean id="backTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="backMasterDataSource" />
 	</bean>
-	<tx:annotation-driven transaction-manager="backTransactionManager" proxy-target-class="true" order="1" />
+	<tx:annotation-driven transaction-manager="backTransactionManager"  order="1" />
 	
 </beans>
