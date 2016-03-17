@@ -20,11 +20,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/home")
 public class HomeLoginController extends BaseController {
-	
 	private static final long serialVersionUID = 1L;
-//
-//	@Autowired
-//	private ITbSecurityAccountBiz iTbSecurityAccountBiz;
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(){
@@ -33,7 +29,7 @@ public class HomeLoginController extends BaseController {
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
-	public Object login(Model model,String username,String password,String remember){
+	public Object login(String username,String password,String remember){
 		Map<String,Object> result = new HashMap<>();
 		if(StringUtils.isEmpty(username)){
 			result.put("success",false);
@@ -45,18 +41,16 @@ public class HomeLoginController extends BaseController {
 			result.put("message","请输入登录密码!");
 			return result;
 		}
-//		ITbSecurityAccountBiz iTbSecurityAccountBiz = (ITbSecurityAccountBiz) ContextUtil.getBean(ITbSecurityAccountBiz.class);
-//		DataVO<TbSecurityAccount> vo  =  iTbSecurityAccountBiz.userLogin("admin","123456");
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+		token.setRememberMe(StringUtils.isNotEmpty(remember) && remember.equals("true") ? true : false );
 		try{
-			Subject subject = SecurityUtils.getSubject();
-			UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-			token.setRememberMe(StringUtils.isNotEmpty(remember) && remember.equals("true") ? true : false );
 			subject.login(token);
 			result.put("success",true);
 			result.put("message","您已成功登录本系统!");
 		}catch(Exception e){
 			result.put("success",false);
-			result.put("message","登录失败!");
+			result.put("message",e.getMessage());
 		}
 		return result;
 	}

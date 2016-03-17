@@ -40,7 +40,7 @@
 					},
 					error:function(){
 						$.unblockUI();
-						$.blockUI({message:"<div style='line-height:40px;'>对账过程中出现错误!</div>",timeout:4000});
+						$.blockUI({message:"<div style='line-height:40px;'>"+data.message+"</div>",timeout:4000});
 					}
 				});
 			};

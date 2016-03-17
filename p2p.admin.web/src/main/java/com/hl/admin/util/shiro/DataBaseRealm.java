@@ -43,26 +43,22 @@ public class DataBaseRealm extends AuthorizingRealm{
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
 		if (authcToken == null) return null;
-		try{
-			ITbSecurityAccountBiz tbSecurityAccountBiz = (ITbSecurityAccountBiz) ContextUtil.getBean(ITbSecurityAccountBiz.class);
-			UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
-			String temp = "";
-			for(char c : token.getPassword()){
-				temp += c;
-			}
-			DataVO<TbSecurityAccount> resultVO = tbSecurityAccountBiz.userLogin(token.getUsername(),temp);
-			if(resultVO.isSuccess()){
-				TbSecurityAccount objAccount = resultVO.getResult();
-				Session session = SecurityUtils.getSubject().getSession();
-				session.setAttribute(SessionConstant.LOGIN_ID,objAccount.getDataId());
-				session.setAttribute(SessionConstant.LOGIN_NAME,objAccount.getLoginName());
-				SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(objAccount.getDataId(),temp,this.getName());
-				return simpleAuthenticationInfo;
-			}else{
-				throw new AuthenticationException(resultVO.getMessage());
-			}
-		}catch(Exception e){
-			throw new AuthenticationException(e.getMessage());
+		ITbSecurityAccountBiz tbSecurityAccountBiz = (ITbSecurityAccountBiz) ContextUtil.getBean(ITbSecurityAccountBiz.class);
+		UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
+		String temp = "";
+		for(char c : token.getPassword()){
+			temp += c;
+		}
+		DataVO<TbSecurityAccount> resultVO = tbSecurityAccountBiz.userLogin(token.getUsername(),temp);
+		if(resultVO.isSuccess()){
+			TbSecurityAccount objAccount = resultVO.getResult();
+			Session session = SecurityUtils.getSubject().getSession();
+			session.setAttribute(SessionConstant.LOGIN_ID,objAccount.getDataId());
+			session.setAttribute(SessionConstant.LOGIN_NAME,objAccount.getLoginName());
+			SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(objAccount.getDataId(),temp,this.getName());
+			return simpleAuthenticationInfo;
+		}else{
+			throw new AuthenticationException(resultVO.getMessage());
 		}
 	}
 }
