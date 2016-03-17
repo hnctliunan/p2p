@@ -5,6 +5,7 @@ import com.hl.admin.entity.security.TbSecurityResource;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TbSecurityAccountRoleResourcesExtMapper {
 	/**
@@ -39,7 +40,7 @@ public interface TbSecurityAccountRoleResourcesExtMapper {
 	 * @param accountId
 	 * @return
 	 */
-	List<TbSecurityResource> selectAccRes(String accountId);
+	List<Map<String,Object>> selectAccRes(String accountId);
 	
 	public List<String> queryAccountAccessCode(String accountId);
 	

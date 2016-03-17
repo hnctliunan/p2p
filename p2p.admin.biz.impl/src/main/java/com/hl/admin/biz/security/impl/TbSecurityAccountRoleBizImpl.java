@@ -2,16 +2,13 @@ package com.hl.admin.biz.security.impl;
 
 import com.hl.admin.biz.security.ITbSecurityAccountRoleBiz;
 import com.hl.admin.dao.security.TbSecurityAccountRoleResourcesExtMapper;
-import com.hl.admin.entity.security.TbSecurityAccountRoleMapping;
 import com.hl.admin.entity.security.TbSecurityResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
-/**
- * Created by admin on 2016/3/17.
- */
 @Service
 public class TbSecurityAccountRoleBizImpl implements ITbSecurityAccountRoleBiz {
 
@@ -19,18 +16,25 @@ public class TbSecurityAccountRoleBizImpl implements ITbSecurityAccountRoleBiz {
     private TbSecurityAccountRoleResourcesExtMapper intrScrtAconRoleRsorExtMapper;
     /**
      * 获取用户拥有的资源
-     * @param accountId 账号id
-     * @return
+     * @param strAccountDataId 账户DataId
+     * @return list
+     * @version 0.1.0 2016/03/15
      * @author liunan
      */
     @Override
-    public List<TbSecurityResource> selectAccRes(String accountId) {
-        return intrScrtAconRoleRsorExtMapper.selectAccRes(accountId);
+    public List<Map<String,Object>> selectAccRes(String strAccountDataId) {
+        return intrScrtAconRoleRsorExtMapper.selectAccRes(strAccountDataId);
     }
 
-    //	查询后台资源中的二级菜单
+    /**
+     * 查询后台资源中的二级菜单
+     * @param strAccountDataId 账户DataId
+     * @return list
+     * @version 0.1.0 2016/03/15
+     * @author liunan
+     */
     @Override
-    public List<TbSecurityResource> queryAccountAccessSecondResource( String accountId) {
-        return this.intrScrtAconRoleRsorExtMapper.queryAccountAccessSecondResource(accountId);
+    public List<TbSecurityResource> queryAccountAccessSecondResource( String strAccountDataId) {
+        return this.intrScrtAconRoleRsorExtMapper.queryAccountAccessSecondResource(strAccountDataId);
     }
 }
