@@ -21,18 +21,20 @@
 				var remember = $("#remember").is(":checked");
 				$.blockUI({message:"<div style='line-height:40px;'>用户登录中,请稍后......</div>"});
 				$.ajax({
-					url:"${base}/home/login",
+					url:"${base}/home/anon/login.json",
 					type:"POST",
 					dataType:"json",
 					timeout:-1,
+                    async:true,
 					data:{
 						username:username,
 						password:password,
 						remember:remember
 					},
 					success:function(data){
+						alert(data.success);
 						if(data && data.success){
-							window.location.href="${base}/home/main.html";
+							window.location.href="${base}/home/authc/main.html";
 						}else{
 							$.unblockUI();
 							$.blockUI({message:"<div style='line-height:40px;'>"+data.message+"</div>",timeout:4000});
@@ -40,7 +42,7 @@
 					},
 					error:function(){
 						$.unblockUI();
-						$.blockUI({message:"<div style='line-height:40px;'>"+data.message+"</div>",timeout:4000});
+						$.blockUI({message:"<div style='line-height:40px;'>登陆失败!</div>",timeout:4000});
 					}
 				});
 			};

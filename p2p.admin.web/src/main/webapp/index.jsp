@@ -1,5 +1,5 @@
 <%
-    String path = request.getContextPath() + "/home/login";
+    String path = request.getContextPath() + "/home/anon/login.html";
     response.sendRedirect(path);
 %>
 %>

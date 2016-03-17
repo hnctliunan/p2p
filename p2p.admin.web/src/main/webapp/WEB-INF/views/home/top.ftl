@@ -14,13 +14,13 @@
 	</head>
 	<body style="background:url(${base}/resources/images/topbg.gif) repeat-x;">
 	    <div class="topleft">
-	    	<a href="${base}/home/main.html" target="_parent"><img src="${base}/resources/images/logo.png" title="系统首页" /></a>
+	    	<a href="${base}/home/authc/main.html" target="_parent"><img src="${base}/resources/images/logo.png" title="系统首页" /></a>
 	    </div>
 	    <ul class="nav">
 		    <#if (menus?size>0)>
 				<#list menus as menu>
 					<li>
-					<form action="${base}/home/left.html" target="leftFrame" id="${menu.dataId!}">
+					<form action="${base}/home/authc/left.html" target="leftFrame" id="${menu.dataId!}">
 			    		<input type="hidden" name="parent" value="${menu.dataId!}" />
 			    		<a onclick="$('#${menu.dataId!}').submit();" class="selected" style="cursor:pointer;">
 			    			<img src="${base}/resources/images/${menu.extensionA!}" title="${menu.resName!}" />
@@ -33,10 +33,10 @@
 	    </ul>
 	    <div class="topright">    
 		    <ul>
-                <li><a href="${base}/security/account/modifypassword" target="rightFrame">修改密码</a></li>
+                <li><a href="${base}/authc/account/modifypassword" target="rightFrame">修改密码</a></li>
 				<li><span><img src="${base}/resources/images/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
 				<li><a href="#">关于</a></li>
-				<li><a href="${base}/home/logout" target="_parent">退出</a></li>
+				<li><a href="${base}/home/authc/logout" target="_parent">退出</a></li>
 				</ul>
 	    	<div class="user">
 	    		<span>admin</span>

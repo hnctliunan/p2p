@@ -29,12 +29,12 @@ public class HomeController extends BaseController {
 	@Autowired
 	private ITbSecurityAccountRoleBiz intrSecurityAccountRoleBiz;
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
+	@RequestMapping(value="/anon/login.html",method=RequestMethod.GET)
 	public String login(){
 		return "home/login";
 	}
 	
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/anon/login.json",method=RequestMethod.POST)
 	@ResponseBody
 	public Object login(String username,String password,String remember){
 		Map<String,Object> result = new HashMap<>();
@@ -62,7 +62,7 @@ public class HomeController extends BaseController {
 		return result;
 	}
 	
-	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/logout",method=RequestMethod.GET)
 	public void logout(HttpServletRequest request,HttpServletResponse response){
 		Subject subject = SecurityUtils.getSubject();
 		if (subject != null) {
@@ -75,12 +75,12 @@ public class HomeController extends BaseController {
 		}
 	}
 
-	@RequestMapping(value="/main.html",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/main.html",method=RequestMethod.GET)
 	public String main(){
 		return "home/main";
 	}
 
-	@RequestMapping(value="/top.html",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/top.html",method=RequestMethod.GET)
 	public String top(Model model){
 		Subject subject = SecurityUtils.getSubject();
 		String username = subject.getPrincipal().toString();
@@ -89,7 +89,7 @@ public class HomeController extends BaseController {
 		return "home/top";
 	}
 
-	@RequestMapping(value="/left.html",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/left.html",method=RequestMethod.GET)
 	public String left(HttpServletRequest request,Model model,String parent){
 		String root = request.getSession().getServletContext().getContextPath();
 		Subject subject = SecurityUtils.getSubject();
@@ -130,8 +130,7 @@ public class HomeController extends BaseController {
 		return "home/left";
 	}
 
-
-	@RequestMapping(value="/index",method=RequestMethod.GET)
+	@RequestMapping(value="/authc/index",method=RequestMethod.GET)
 	public String index(){
 		return "home/index";
 	}

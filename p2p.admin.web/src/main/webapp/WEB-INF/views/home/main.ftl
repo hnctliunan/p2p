@@ -5,10 +5,10 @@
 		<title>信息管理系统界面</title>
 	</head>
 	<frameset rows="88,*" cols="*" frameborder="no" border="0" framespacing="0">
-		<frame src="${base}/home/top.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+		<frame src="${base}/home/authc/top.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
 		<frameset cols="187,*" frameborder="no" border="0" framespacing="0">
-			<frame src="${base}/home/left.html" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
-			<frame src="${base}/home/index.html" name="rightFrame" id="rightFrame" title="rightFrame" />
+			<frame src="${base}/home/authc/left.html" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
+			<frame src="${base}/home/authc/index.html" name="rightFrame" id="rightFrame" title="rightFrame" />
 		</frameset>
 	</frameset>
 	<noframes>
