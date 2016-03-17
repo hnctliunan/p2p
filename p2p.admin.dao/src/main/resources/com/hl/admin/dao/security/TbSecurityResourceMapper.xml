@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hl.admin.dao.security.TbSecurityResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.hl.admin.entity.security.TbSecurityResource" >
+    <id column="data_id" property="dataId" jdbcType="CHAR" />
+    <result column="data_enable" property="dataEnable" jdbcType="CHAR" />
+    <result column="data_insert_time" property="dataInsertTime" jdbcType="TIMESTAMP" />
+    <result column="data_update_time" property="dataUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="data_delete_time" property="dataDeleteTime" jdbcType="TIMESTAMP" />
+    <result column="extension_a" property="extensionA" jdbcType="VARCHAR" />
+    <result column="extension_b" property="extensionB" jdbcType="VARCHAR" />
+    <result column="extension_c" property="extensionC" jdbcType="VARCHAR" />
+    <result column="extension_d" property="extensionD" jdbcType="VARCHAR" />
+    <result column="extension_e" property="extensionE" jdbcType="VARCHAR" />
+    <result column="extension_f" property="extensionF" jdbcType="VARCHAR" />
+    <result column="res_name" property="resName" jdbcType="VARCHAR" />
+    <result column="res_code" property="resCode" jdbcType="VARCHAR" />
+    <result column="res_parent" property="resParent" jdbcType="CHAR" />
+    <result column="res_type" property="resType" jdbcType="CHAR" />
+    <result column="res_url" property="resUrl" jdbcType="VARCHAR" />
+    <result column="res_icon" property="resIcon" jdbcType="VARCHAR" />
+    <result column="res_enable" property="resEnable" jdbcType="CHAR" />
+    <result column="res_desc" property="resDesc" jdbcType="VARCHAR" />
+    <result column="res_sort" property="resSort" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    data_id, data_enable, data_insert_time, data_update_time, data_delete_time, extension_a, 
+    extension_b, extension_c, extension_d, extension_e, extension_f, res_name, res_code, 
+    res_parent, res_type, res_url, res_icon, res_enable, res_desc, res_sort
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hl.admin.entity.security.TbSecurityResourceExample" >
+    <include refid="MySQLDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_security_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="MySQLDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_security_resource
+    where data_id = #{dataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_security_resource
+    where data_id = #{dataId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hl.admin.entity.security.TbSecurityResourceExample" >
+    delete from tb_security_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hl.admin.entity.security.TbSecurityResource" >
+    insert into tb_security_resource (data_id, data_enable, data_insert_time, 
+      data_update_time, data_delete_time, extension_a, 
+      extension_b, extension_c, extension_d, 
+      extension_e, extension_f, res_name, 
+      res_code, res_parent, res_type, 
+      res_url, res_icon, res_enable, 
+      res_desc, res_sort)
+    values (#{dataId,jdbcType=CHAR}, #{dataEnable,jdbcType=CHAR}, #{dataInsertTime,jdbcType=TIMESTAMP}, 
+      #{dataUpdateTime,jdbcType=TIMESTAMP}, #{dataDeleteTime,jdbcType=TIMESTAMP}, #{extensionA,jdbcType=VARCHAR}, 
+      #{extensionB,jdbcType=VARCHAR}, #{extensionC,jdbcType=VARCHAR}, #{extensionD,jdbcType=VARCHAR}, 
+      #{extensionE,jdbcType=VARCHAR}, #{extensionF,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, 
+      #{resCode,jdbcType=VARCHAR}, #{resParent,jdbcType=CHAR}, #{resType,jdbcType=CHAR}, 
+      #{resUrl,jdbcType=VARCHAR}, #{resIcon,jdbcType=VARCHAR}, #{resEnable,jdbcType=CHAR}, 
+      #{resDesc,jdbcType=VARCHAR}, #{resSort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hl.admin.entity.security.TbSecurityResource" >
+    insert into tb_security_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="dataEnable != null" >
+        data_enable,
+      </if>
+      <if test="dataInsertTime != null" >
+        data_insert_time,
+      </if>
+      <if test="dataUpdateTime != null" >
+        data_update_time,
+      </if>
+      <if test="dataDeleteTime != null" >
+        data_delete_time,
+      </if>
+      <if test="extensionA != null" >
+        extension_a,
+      </if>
+      <if test="extensionB != null" >
+        extension_b,
+      </if>
+      <if test="extensionC != null" >
+        extension_c,
+      </if>
+      <if test="extensionD != null" >
+        extension_d,
+      </if>
+      <if test="extensionE != null" >
+        extension_e,
+      </if>
+      <if test="extensionF != null" >
+        extension_f,
+      </if>
+      <if test="resName != null" >
+        res_name,
+      </if>
+      <if test="resCode != null" >
+        res_code,
+      </if>
+      <if test="resParent != null" >
+        res_parent,
+      </if>
+      <if test="resType != null" >
+        res_type,
+      </if>
+      <if test="resUrl != null" >
+        res_url,
+      </if>
+      <if test="resIcon != null" >
+        res_icon,
+      </if>
+      <if test="resEnable != null" >
+        res_enable,
+      </if>
+      <if test="resDesc != null" >
+        res_desc,
+      </if>
+      <if test="resSort != null" >
+        res_sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=CHAR},
+      </if>
+      <if test="dataEnable != null" >
+        #{dataEnable,jdbcType=CHAR},
+      </if>
+      <if test="dataInsertTime != null" >
+        #{dataInsertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataUpdateTime != null" >
+        #{dataUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataDeleteTime != null" >
+        #{dataDeleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extensionA != null" >
+        #{extensionA,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionB != null" >
+        #{extensionB,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionC != null" >
+        #{extensionC,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionD != null" >
+        #{extensionD,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionE != null" >
+        #{extensionE,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionF != null" >
+        #{extensionF,jdbcType=VARCHAR},
+      </if>
+      <if test="resName != null" >
+        #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resCode != null" >
+        #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resParent != null" >
+        #{resParent,jdbcType=CHAR},
+      </if>
+      <if test="resType != null" >
+        #{resType,jdbcType=CHAR},
+      </if>
+      <if test="resUrl != null" >
+        #{resUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resIcon != null" >
+        #{resIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="resEnable != null" >
+        #{resEnable,jdbcType=CHAR},
+      </if>
+      <if test="resDesc != null" >
+        #{resDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resSort != null" >
+        #{resSort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hl.admin.entity.security.TbSecurityResourceExample" resultType="java.lang.Integer" >
+    select count(*) from tb_security_resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_security_resource
+    <set >
+      <if test="record.dataId != null" >
+        data_id = #{record.dataId,jdbcType=CHAR},
+      </if>
+      <if test="record.dataEnable != null" >
+        data_enable = #{record.dataEnable,jdbcType=CHAR},
+      </if>
+      <if test="record.dataInsertTime != null" >
+        data_insert_time = #{record.dataInsertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dataUpdateTime != null" >
+        data_update_time = #{record.dataUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dataDeleteTime != null" >
+        data_delete_time = #{record.dataDeleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.extensionA != null" >
+        extension_a = #{record.extensionA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extensionB != null" >
+        extension_b = #{record.extensionB,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extensionC != null" >
+        extension_c = #{record.extensionC,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extensionD != null" >
+        extension_d = #{record.extensionD,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extensionE != null" >
+        extension_e = #{record.extensionE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extensionF != null" >
+        extension_f = #{record.extensionF,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resName != null" >
+        res_name = #{record.resName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resCode != null" >
+        res_code = #{record.resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resParent != null" >
+        res_parent = #{record.resParent,jdbcType=CHAR},
+      </if>
+      <if test="record.resType != null" >
+        res_type = #{record.resType,jdbcType=CHAR},
+      </if>
+      <if test="record.resUrl != null" >
+        res_url = #{record.resUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resIcon != null" >
+        res_icon = #{record.resIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resEnable != null" >
+        res_enable = #{record.resEnable,jdbcType=CHAR},
+      </if>
+      <if test="record.resDesc != null" >
+        res_desc = #{record.resDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resSort != null" >
+        res_sort = #{record.resSort,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_security_resource
+    set data_id = #{record.dataId,jdbcType=CHAR},
+      data_enable = #{record.dataEnable,jdbcType=CHAR},
+      data_insert_time = #{record.dataInsertTime,jdbcType=TIMESTAMP},
+      data_update_time = #{record.dataUpdateTime,jdbcType=TIMESTAMP},
+      data_delete_time = #{record.dataDeleteTime,jdbcType=TIMESTAMP},
+      extension_a = #{record.extensionA,jdbcType=VARCHAR},
+      extension_b = #{record.extensionB,jdbcType=VARCHAR},
+      extension_c = #{record.extensionC,jdbcType=VARCHAR},
+      extension_d = #{record.extensionD,jdbcType=VARCHAR},
+      extension_e = #{record.extensionE,jdbcType=VARCHAR},
+      extension_f = #{record.extensionF,jdbcType=VARCHAR},
+      res_name = #{record.resName,jdbcType=VARCHAR},
+      res_code = #{record.resCode,jdbcType=VARCHAR},
+      res_parent = #{record.resParent,jdbcType=CHAR},
+      res_type = #{record.resType,jdbcType=CHAR},
+      res_url = #{record.resUrl,jdbcType=VARCHAR},
+      res_icon = #{record.resIcon,jdbcType=VARCHAR},
+      res_enable = #{record.resEnable,jdbcType=CHAR},
+      res_desc = #{record.resDesc,jdbcType=VARCHAR},
+      res_sort = #{record.resSort,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hl.admin.entity.security.TbSecurityResource" >
+    update tb_security_resource
+    <set >
+      <if test="dataEnable != null" >
+        data_enable = #{dataEnable,jdbcType=CHAR},
+      </if>
+      <if test="dataInsertTime != null" >
+        data_insert_time = #{dataInsertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataUpdateTime != null" >
+        data_update_time = #{dataUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataDeleteTime != null" >
+        data_delete_time = #{dataDeleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extensionA != null" >
+        extension_a = #{extensionA,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionB != null" >
+        extension_b = #{extensionB,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionC != null" >
+        extension_c = #{extensionC,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionD != null" >
+        extension_d = #{extensionD,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionE != null" >
+        extension_e = #{extensionE,jdbcType=VARCHAR},
+      </if>
+      <if test="extensionF != null" >
+        extension_f = #{extensionF,jdbcType=VARCHAR},
+      </if>
+      <if test="resName != null" >
+        res_name = #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resCode != null" >
+        res_code = #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resParent != null" >
+        res_parent = #{resParent,jdbcType=CHAR},
+      </if>
+      <if test="resType != null" >
+        res_type = #{resType,jdbcType=CHAR},
+      </if>
+      <if test="resUrl != null" >
+        res_url = #{resUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resIcon != null" >
+        res_icon = #{resIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="resEnable != null" >
+        res_enable = #{resEnable,jdbcType=CHAR},
+      </if>
+      <if test="resDesc != null" >
+        res_desc = #{resDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resSort != null" >
+        res_sort = #{resSort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hl.admin.entity.security.TbSecurityResource" >
+    update tb_security_resource
+    set data_enable = #{dataEnable,jdbcType=CHAR},
+      data_insert_time = #{dataInsertTime,jdbcType=TIMESTAMP},
+      data_update_time = #{dataUpdateTime,jdbcType=TIMESTAMP},
+      data_delete_time = #{dataDeleteTime,jdbcType=TIMESTAMP},
+      extension_a = #{extensionA,jdbcType=VARCHAR},
+      extension_b = #{extensionB,jdbcType=VARCHAR},
+      extension_c = #{extensionC,jdbcType=VARCHAR},
+      extension_d = #{extensionD,jdbcType=VARCHAR},
+      extension_e = #{extensionE,jdbcType=VARCHAR},
+      extension_f = #{extensionF,jdbcType=VARCHAR},
+      res_name = #{resName,jdbcType=VARCHAR},
+      res_code = #{resCode,jdbcType=VARCHAR},
+      res_parent = #{resParent,jdbcType=CHAR},
+      res_type = #{resType,jdbcType=CHAR},
+      res_url = #{resUrl,jdbcType=VARCHAR},
+      res_icon = #{resIcon,jdbcType=VARCHAR},
+      res_enable = #{resEnable,jdbcType=CHAR},
+      res_desc = #{resDesc,jdbcType=VARCHAR},
+      res_sort = #{resSort,jdbcType=INTEGER}
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+  <insert id="batchInsert" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      insert into tb_security_resource (data_id,data_enable,data_insert_time,data_update_time,data_delete_time,extension_a,extension_b,extension_c,extension_d,extension_e,extension_f,res_name,res_code,res_parent,res_type,res_url,res_icon,res_enable,res_desc,res_sort) values (#{record.dataId,jdbcType=CHAR},#{record.dataEnable,jdbcType=CHAR},#{record.dataInsertTime,jdbcType=TIMESTAMP},#{record.dataUpdateTime,jdbcType=TIMESTAMP},#{record.dataDeleteTime,jdbcType=TIMESTAMP},#{record.extensionA,jdbcType=VARCHAR},#{record.extensionB,jdbcType=VARCHAR},#{record.extensionC,jdbcType=VARCHAR},#{record.extensionD,jdbcType=VARCHAR},#{record.extensionE,jdbcType=VARCHAR},#{record.extensionF,jdbcType=VARCHAR},#{record.resName,jdbcType=VARCHAR},#{record.resCode,jdbcType=VARCHAR},#{record.resParent,jdbcType=CHAR},#{record.resType,jdbcType=CHAR},#{record.resUrl,jdbcType=VARCHAR},#{record.resIcon,jdbcType=VARCHAR},#{record.resEnable,jdbcType=CHAR},#{record.resDesc,jdbcType=VARCHAR},#{record.resSort,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <update id="batchUpdateByPrimaryKey" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      update tb_security_resource set data_id=#{record.dataId,jdbcType=CHAR},data_enable=#{record.dataEnable,jdbcType=CHAR},data_insert_time=#{record.dataInsertTime,jdbcType=TIMESTAMP},data_update_time=#{record.dataUpdateTime,jdbcType=TIMESTAMP},data_delete_time=#{record.dataDeleteTime,jdbcType=TIMESTAMP},extension_a=#{record.extensionA,jdbcType=VARCHAR},extension_b=#{record.extensionB,jdbcType=VARCHAR},extension_c=#{record.extensionC,jdbcType=VARCHAR},extension_d=#{record.extensionD,jdbcType=VARCHAR},extension_e=#{record.extensionE,jdbcType=VARCHAR},extension_f=#{record.extensionF,jdbcType=VARCHAR},res_name=#{record.resName,jdbcType=VARCHAR},res_code=#{record.resCode,jdbcType=VARCHAR},res_parent=#{record.resParent,jdbcType=CHAR},res_type=#{record.resType,jdbcType=CHAR},res_url=#{record.resUrl,jdbcType=VARCHAR},res_icon=#{record.resIcon,jdbcType=VARCHAR},res_enable=#{record.resEnable,jdbcType=CHAR},res_desc=#{record.resDesc,jdbcType=VARCHAR},res_sort=#{record.resSort,jdbcType=INTEGER} where data_id=#{record.dataId,jdbcType=CHAR}
+    </foreach>
+  </update>
+  <delete id="batchDeleteByPrimaryKey" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      delete from tb_security_resource  where data_id=#{record}
+    </foreach>
+  </delete>
+  <sql id="MySQLDialectPrefix" >
+    <if test="pageSet != null" >
+      select * from ( 
+    </if>
+  </sql>
+  <sql id="MySQLDialectSuffix" >
+    <if test="pageSet != null" >
+      <![CDATA[ ) as _TB limit #{pageSet.start},#{pageSet.limit} ]]>
+    </if>
+  </sql>
+</mapper>

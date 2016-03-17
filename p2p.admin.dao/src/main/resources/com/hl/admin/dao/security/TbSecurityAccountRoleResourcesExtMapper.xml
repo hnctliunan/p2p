@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hl.admin.dao.security.TbSecurityAccountRoleResourcesExtMapper">
+	<!--根据用户id查询可用角色-->
+	<select id="selectAbleRole" parameterType="map" resultType="java.util.Map">
+		select data_id,data_enable,data_insert_time,role_name,role_code,role_enable,role_desc 
+			from tb_security_role role where role.data_id not in (
+				select role_id from tb_security_account_role_mapping rm 
+				where rm.account_id = #{accountId,jdbcType=CHAR}
+				) and role.data_enable =#{status,jdbcType=CHAR}
+	</select>
+	
+	<select id="selectOwnRole" parameterType="map" resultType="java.util.Map">
+		select accrole.data_id as data_id,account_id,role_id,role_name,role_code,role_enable,role_desc 
+			from tb_security_account_role_mapping accrole
+			left JOIN tb_security_role role 
+			on accrole.role_id = role.data_id
+			where accrole.account_id =#{accountId,jdbcType=CHAR} and role.data_enable = #{status,jdbcType=CHAR}
+	</select>
+	
+	<select id="selectAccRes" parameterType="map" resultType="java.util.Map">
+		select data_id,res_name,res_code,res_parent,res_url,res_sort from (
+			select data_id,res_name,res_code,res_parent,res_url,res_sort from (
+				select resrole.resource_id from tb_security_resource_role_mapping resrole 
+							where resrole.role_id in (
+								select accrole.role_id from tb_security_account_role_mapping accrole
+								where accrole.account_id=#{accountId,jdbcType=CHAR}
+							)) resrole_accrole 
+			left join tb_security_resource res 
+			on res.data_id = resrole_accrole.resource_id
+			UNION
+			select data_id,res_name,res_code,res_parent,res_url,res_sort from (
+			select resource_id from tb_security_resource_account_mapping resacc
+			where resacc.account_id=#{accountId,jdbcType=CHAR}) resaccm
+			left join tb_security_resource res on res.data_id = resaccm.resource_id
+		) r order by r.res_sort asc 
+	</select>
+	<sql id="Example_Where_Clause" >
+		<where >
+			<foreach collection="oredCriteria" item="criteria" separator="or" >
+				<if test="criteria.valid" >
+					<trim prefix="(" suffix=")" prefixOverrides="and" >
+						<foreach collection="criteria.criteria" item="criterion" >
+							<choose >
+								<when test="criterion.noValue" >
+                  and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue" >
+                  and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="MySQLDialectPrefix" >
+		<if test="pageSet != null" >
+	      select * from ( 
+		</if>
+	</sql>
+	<sql id="MySQLDialectSuffix" >
+		<if test="pageSet != null" >
+		<![CDATA[ ) as _TB limit #{pageSet.start},#{pageSet.limit} ]]>
+		</if>
+	</sql>
+	
+	<select id="queryAccountAccessCode" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT res_code,res_sort FROM tb_security_resource r
+		WHERE r.data_id IN (
+				SELECT resource_id FROM tb_security_resource_role_mapping rm
+				WHERE rm.role_id IN (
+						SELECT role_id FROM tb_security_account_role_mapping ar WHERE ar.account_id = #{0}
+				)
+		)
+		UNION
+			SELECT res_code,res_sort FROM tb_security_resource rr
+			WHERE rr.data_id IN ( SELECT resource_id
+					FROM tb_security_resource_account_mapping am
+					WHERE am.account_id = #{0} )
+			ORDER BY res_sort ASC
+	</select>
+	
+	
+	<resultMap id="BaseResultMap" type="com.hl.admin.entity.security.TbSecurityResource" >
+	    <id column="data_id" property="dataId" jdbcType="CHAR" />
+	    <result column="data_enable" property="dataEnable" jdbcType="CHAR" />
+	    <result column="data_insert_time" property="dataInsertTime" jdbcType="TIMESTAMP" />
+	    <result column="data_update_time" property="dataUpdateTime" jdbcType="TIMESTAMP" />
+	    <result column="data_delete_time" property="dataDeleteTime" jdbcType="TIMESTAMP" />
+	    <result column="extension_a" property="extensionA" jdbcType="VARCHAR" />
+	    <result column="extension_b" property="extensionB" jdbcType="VARCHAR" />
+	    <result column="extension_c" property="extensionC" jdbcType="VARCHAR" />
+	    <result column="extension_d" property="extensionD" jdbcType="VARCHAR" />
+	    <result column="extension_e" property="extensionE" jdbcType="VARCHAR" />
+	    <result column="extension_f" property="extensionF" jdbcType="VARCHAR" />
+	    <result column="res_name" property="resName" jdbcType="VARCHAR" />
+	    <result column="res_code" property="resCode" jdbcType="VARCHAR" />
+	    <result column="res_parent" property="resParent" jdbcType="CHAR" />
+	    <result column="res_type" property="resType" jdbcType="CHAR" />
+	    <result column="res_url" property="resUrl" jdbcType="VARCHAR" />
+	    <result column="res_icon" property="resIcon" jdbcType="VARCHAR" />
+	    <result column="res_enable" property="resEnable" jdbcType="CHAR" />
+	    <result column="res_desc" property="resDesc" jdbcType="VARCHAR" />
+	    <result column="res_sort" property="resSort" jdbcType="INTEGER" />
+	  </resultMap>
+	<!-- 查询后台资源中的二级菜单 -->
+	<select id="queryAccountAccessSecondResource" resultMap="BaseResultMap"  parameterType="java.lang.String">
+		select * from (
+			SELECT * FROM tb_security_resource r
+			WHERE r.data_id IN (
+					SELECT resource_id FROM tb_security_resource_role_mapping rm
+					WHERE rm.role_id IN (
+							SELECT role_id FROM tb_security_account_role_mapping ar WHERE ar.account_id = #{0}
+					)
+			)
+			UNION
+				SELECT * FROM tb_security_resource rr
+				WHERE rr.data_id IN ( SELECT resource_id
+						FROM tb_security_resource_account_mapping am
+						WHERE am.account_id = #{0} )
+			) as temp where temp.res_parent = (select data_id from tb_security_resource re where re.res_code = 'BACK') ORDER BY res_sort ASC
+	</select>
+	
+</mapper>

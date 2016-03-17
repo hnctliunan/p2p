@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hl.admin.dao.security.TbSecurityResourceAccountMappingMapper" >
+  <resultMap id="BaseResultMap" type="com.hl.admin.entity.security.TbSecurityResourceAccountMapping" >
+    <id column="data_id" property="dataId" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="account_id" property="accountId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    data_id, resource_id, account_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMappingExample" >
+    <include refid="MySQLDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_security_resource_account_mapping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="MySQLDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_security_resource_account_mapping
+    where data_id = #{dataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_security_resource_account_mapping
+    where data_id = #{dataId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMappingExample" >
+    delete from tb_security_resource_account_mapping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMapping" >
+    insert into tb_security_resource_account_mapping (data_id, resource_id, account_id
+      )
+    values (#{dataId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, #{accountId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMapping" >
+    insert into tb_security_resource_account_mapping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMappingExample" resultType="java.lang.Integer" >
+    select count(*) from tb_security_resource_account_mapping
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_security_resource_account_mapping
+    <set >
+      <if test="record.dataId != null" >
+        data_id = #{record.dataId,jdbcType=CHAR},
+      </if>
+      <if test="record.resourceId != null" >
+        resource_id = #{record.resourceId,jdbcType=CHAR},
+      </if>
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_security_resource_account_mapping
+    set data_id = #{record.dataId,jdbcType=CHAR},
+      resource_id = #{record.resourceId,jdbcType=CHAR},
+      account_id = #{record.accountId,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMapping" >
+    update tb_security_resource_account_mapping
+    <set >
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=CHAR},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hl.admin.entity.security.TbSecurityResourceAccountMapping" >
+    update tb_security_resource_account_mapping
+    set resource_id = #{resourceId,jdbcType=CHAR},
+      account_id = #{accountId,jdbcType=CHAR}
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+  <insert id="batchInsert" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      insert into tb_security_resource_account_mapping (data_id,resource_id,account_id) values (#{record.dataId,jdbcType=CHAR},#{record.resourceId,jdbcType=CHAR},#{record.accountId,jdbcType=CHAR})
+    </foreach>
+  </insert>
+  <update id="batchUpdateByPrimaryKey" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      update tb_security_resource_account_mapping set data_id=#{record.dataId,jdbcType=CHAR},resource_id=#{record.resourceId,jdbcType=CHAR},account_id=#{record.accountId,jdbcType=CHAR} where data_id=#{record.dataId,jdbcType=CHAR}
+    </foreach>
+  </update>
+  <delete id="batchDeleteByPrimaryKey" parameterType="java.util.List" >
+    <foreach collection="records" item="record" index="index" separator=";" >
+      delete from tb_security_resource_account_mapping  where data_id=#{record}
+    </foreach>
+  </delete>
+  <sql id="MySQLDialectPrefix" >
+    <if test="pageSet != null" >
+      select * from ( 
+    </if>
+  </sql>
+  <sql id="MySQLDialectSuffix" >
+    <if test="pageSet != null" >
+      <![CDATA[ ) as _TB limit #{pageSet.start},#{pageSet.limit} ]]>
+    </if>
+  </sql>
+</mapper>

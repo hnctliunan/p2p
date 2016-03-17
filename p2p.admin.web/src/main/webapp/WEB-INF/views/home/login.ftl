@@ -32,7 +32,7 @@
 					},
 					success:function(data){
 						if(data && data.success){
-							window.location.href="${base}/home/main";
+							window.location.href="${base}/home/main.html";
 						}else{
 							$.unblockUI();
 							$.blockUI({message:"<div style='line-height:40px;'>"+data.message+"</div>",timeout:4000});

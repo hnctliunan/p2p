@@ -5,6 +5,7 @@ import com.hl.admin.base.vo.DataVO;
 import com.hl.admin.dao.security.TbSecurityAccountMapper;
 import com.hl.admin.entity.security.TbSecurityAccount;
 import com.hl.admin.entity.security.TbSecurityAccountExample;
+import com.hl.admin.entity.security.TbSecurityResource;
 import com.hl.utils.encrypt.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -14,18 +14,20 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="com.hl.entity.security" targetProject="G:\p2p\p2p\p2p.admin.entity\src\main\java">
+		<javaModelGenerator targetPackage="com.hl.admin.entity.security" targetProject="G:\p2p\p2p\p2p.admin.entity\src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.hl.dao.security" targetProject="G:\p2p\p2p\p2p.admin.dao\src\main\resources">
+		<sqlMapGenerator targetPackage="com.hl.admin.dao.security" targetProject="G:\p2p\p2p\p2p.admin.dao\src\main\resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
-		<javaClientGenerator type="XMLMAPPER" targetPackage="com.hl.dao.security" targetProject="G:\p2p\p2p\p2p.admin.dao\src\main\java">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.hl.admin.dao.security" targetProject="G:\p2p\p2p\p2p.admin.dao\src\main\java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="tb_security_account" />
-		
+		<table tableName="tb_security_account_role_mapping" />
+		<table tableName="tb_security_resource_account_mapping" />
+		<table tableName="tb_security_resource_role_mapping" />
+
 	</context>
 </generatorConfiguration> 
